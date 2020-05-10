@@ -1,35 +1,42 @@
-import React from 'react';
-import Link from 'next/link';
+import React, { useState } from "react";
+import {
+	Collapse,
+	Navbar,
+	NavbarToggler,
+	Nav,
+	NavItem,
+	NavLink
+} from "reactstrap";
 
-const ulStyle = {
-  display: 'flex',
-  background: 'lilac'
-}
-const liStyle = {
-  diplay: 'inline-block',
-  marginLeft: '3em'
-}
+const Navigation = (props) => {
+	const [isOpen, setIsOpen] = useState(false);
 
-const Navigation = () => {
-  return (
-    <ul style={ulStyle}>
-      <li style={liStyle}>
-        <Link href="/">Home</Link>
-      </li>
-      <li style={liStyle}>
-        <Link href="/About">About</Link>
-      </li>
-      <li style={liStyle}>
-        <Link href="/blog/Notas">Notas</Link>
-      </li>
-      <li style={liStyle}>
-        <Link href="/Test">Test</Link>
-      </li>
-      <li style={liStyle}>
-        <Link href="/Ejercicio">Ejercicio</Link>
-      </li>
-    </ul>
-  )
-}
+	const toggle = () => setIsOpen(!isOpen);
+
+	return (
+		<Navbar color="dark" dark expand="md">
+			<NavbarToggler onClick={toggle} />
+			<Collapse isOpen={isOpen} navbar>
+				<Nav className="ml-auto" navbar>
+					<NavItem>
+						<NavLink href="/">Home</NavLink>
+					</NavItem>
+					<NavItem>
+						<NavLink href="/About">About</NavLink>
+					</NavItem>
+					<NavItem>
+						<NavLink href="/blog/Notas">Notas</NavLink>
+					</NavItem>
+					<NavItem>
+						<NavLink href="/Test">Test</NavLink>
+					</NavItem>
+					<NavItem>
+						<NavLink href="/Ejercicio">Ejercicio</NavLink>
+					</NavItem>
+				</Nav>
+			</Collapse>
+		</Navbar>
+	);
+};
 
 export default Navigation;
